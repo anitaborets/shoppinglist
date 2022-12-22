@@ -8,7 +8,6 @@ class itemController {
             const {list, value, quantity, isReady} = req.body
             const item = new Item({list, value, quantity, isReady});
             await item.save()
-
             return res.json({message: 'Item was created successfully'})
         } catch (e) {
             console.log(e)
@@ -47,7 +46,7 @@ class itemController {
         let list = req.body.list;
         let value = req.body.value;
         try {
-            const item = await Item.findOne({"value": value},{"list": list}).exec();
+            const item = await Item.findOne({"value": value}, {"list": list}).exec();
             if (item === null) {
                 res.json({message: 'item is not exists'})
             } else {
@@ -67,7 +66,7 @@ class itemController {
         let isReady = req.body.isReady;
         console.log(req.body)
         try {
-            const item = await Item.findOne({"value": value},{"list": list}).exec();
+            const item = await Item.findOne({"value": value}, {"list": list}).exec();
             if (item === null) {
                 res.json({message: 'item is not exists'})
             } else {
